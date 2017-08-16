@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:local="clr-namespace:AnimationDemo"
+    x:Class="AnimationDemo.JobDetailPage">
+	<ContentPage.Content>
+        <RelativeLayout>
+            <Grid RowSpacing="0"
+                RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression
+                    Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <BoxView BackgroundColor="Fuchsia" Grid.Row="0" />
+                <maps:Map Grid.Row="1" MapType="Street" />
+                <local:JobApplyView Grid.Row="1" x:Name="jobApplyView" />
+            </Grid>
+            <Button BackgroundColor="Lime" Text="Apply" TextColor="White" FontAttributes="Bold"
+                FontSize="20" WidthRequest="75" HeightRequest="50"
+                RelativeLayout.XConstraint="{ConstraintExpression
+                    Type=RelativeToParent, Property=Width, Factor=1, Constant=-100}"
+                RelativeLayout.YConstraint="{ConstraintExpression
+                    Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-25}"
+                x:Name="applyButton" />
+        </RelativeLayout>
+	</ContentPage.Content>
+</ContentPage>
