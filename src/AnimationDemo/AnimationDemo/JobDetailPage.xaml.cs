@@ -3,35 +3,46 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using Xamarin.Forms.Xaml;
 
 namespace AnimationDemo
 {
     public partial class JobDetailPage : ContentPage
     {
+        bool isVisible = false;
         public JobDetailPage()
         {
             InitializeComponent();
 
-            jobApplyView.IsVisible = false;
+            //jobApplyView.IsVisible = false;
+			jobApplyView.TranslationX = applyButton.X + applyButton.Width / 2;
+			jobApplyView.TranslationY = -jobApplyView.Height;
+			jobApplyView.Opacity = 0;
+			jobApplyView.Scale = 0;
 
-            applyButton.Clicked += async (sender, e) =>
+
+			applyButton.Clicked += async (sender, e) =>
             {
-                if (!jobApplyView.IsVisible)
+                if (!isVisible)
                 {
-                    jobApplyView.TranslationX = applyButton.X + applyButton.Width / 2;
-                    jobApplyView.Opacity = 0;
+					isVisible = true;
 
-                    jobApplyView.IsVisible = true;
+					jobApplyView.TranslationX = applyButton.X + applyButton.Width / 2;
+					jobApplyView.TranslationY = -jobApplyView.Height;
+					jobApplyView.Opacity = 0;
+					jobApplyView.Scale = 0;
 
                     await Task.WhenAll(
-                        jobApplyView.TranslateTo(0, 0),
-                        jobApplyView.FadeTo(1, 500)
-                    );
+                        jobApplyView.FadeTo(1, 500),
+                        jobApplyView.ScaleTo(1, 750),
+						jobApplyView.TranslateTo(0, 0)
+
+					);
+
+                    return;
                 }
-                else
-                {
-                    jobApplyView.IsVisible = false;
-                }
+
+                isVisible = false;
             };
         }
     }
