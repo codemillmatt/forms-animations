@@ -2,12 +2,14 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     x:Class="AnimationDemo.JobApplyView"
     BackgroundColor="Navy">
 	<ContentView.Content>
-        <StackLayout Orientation="Vertical" Padding="20">
-            <Label Text="First Name" TextColor="White" FontAttributes="Bold" />
-            <Label Text="Last Name" TextColor="White" FontAttributes="Bold" />
-        </StackLayout>
+        <skia:SKCanvasView PaintSurface="CanvasView_OnPaintSurface" x:Name="canvasView">
+            <skia:SKCanvasView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Handle_Tapped" />
+            </skia:SKCanvasView.GestureRecognizers>
+        </skia:SKCanvasView>
 	</ContentView.Content>
 </ContentView>
