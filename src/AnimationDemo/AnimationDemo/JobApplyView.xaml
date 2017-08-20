@@ -3,13 +3,24 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:local="clr-namespace:AnimationDemo;assembly=AnimationDemo"
     x:Class="AnimationDemo.JobApplyView"
     BackgroundColor="Navy">
 	<ContentView.Content>
-        <skia:SKCanvasView PaintSurface="CanvasView_OnPaintSurface" x:Name="canvasView">
-            <skia:SKCanvasView.GestureRecognizers>
-                <TapGestureRecognizer Tapped="Handle_Tapped" />
-            </skia:SKCanvasView.GestureRecognizers>
-        </skia:SKCanvasView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <!--
+            <skia:SKCanvasView PaintSurface="CanvasView_OnPaintSurface" x:Name="canvasView" Grid.Row="1">
+                <skia:SKCanvasView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Handle_Tapped" />
+                </skia:SKCanvasView.GestureRecognizers>
+            </skia:SKCanvasView>
+            -->
+            <local:ConfirmButton Grid.Row="1" />
+        </Grid>
+
 	</ContentView.Content>
 </ContentView>

@@ -51,6 +51,7 @@
     <Compile Include="JobApplyView.xaml.cs">
       <DependentUpon>JobApplyView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

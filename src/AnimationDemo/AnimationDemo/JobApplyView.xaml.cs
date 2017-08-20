@@ -10,165 +10,190 @@ namespace AnimationDemo
 {
     public partial class JobApplyView : ContentView
     {
-        bool pageIsActive;
-        float startAngle = -10;
-        float endingAngle = 90;
+        //bool waitingLoopRunning;
+        //float startAngle = -10;
+        //float endingAngle = 90;
 
-        bool drawCheckMark = false;
-        float finishedSweep = 0;
-        SKPoint[] checkMarkPoints;
-        bool finishedCircleDone = false;
+        //bool drawCheckMark = false;
+        //float finishedSweep = 0;
+        //SKPoint[] checkMarkPoints;
+
+        //bool drawStaticText = true;
 
         public JobApplyView()
         {
             InitializeComponent();
         }
 
+        //public void Appearing()
+        //{
+        //    drawStaticText = true;
+        //    canvasView.InvalidateSurface();
+        //}
 
-        public void Appearing()
-        {
-            pageIsActive = true;
-            WaitingAnimationLoop();
-        }
+        //public void Disappearing()
+        //{
+        //    waitingLoopRunning = false;
+        //    drawCheckMark = false;
+        //    drawStaticText = false;
+        //}
 
-        public void Disappearing()
-        {
-            pageIsActive = false;
-        }
+        //async Task WaitingAnimationLoop()
+        //{
+        //    waitingLoopRunning = true;
 
-        async Task WaitingAnimationLoop()
-        {
-            bool endingShouldGrow = true;
+        //    bool endingShouldGrow = true;
 
-            while (pageIsActive)
-            {
-                canvasView.InvalidateSurface();
+        //    while (waitingLoopRunning)
+        //    {
+        //        canvasView.InvalidateSurface();
 
-                startAngle += 5;
+        //        startAngle += 5;
 
-                if (endingAngle < 330 && endingShouldGrow)
-                    endingAngle += 10;
+        //        if (endingAngle < 330 && endingShouldGrow)
+        //            endingAngle += 10;
 
-                if (endingAngle > 45 && !endingShouldGrow)
-                    endingAngle -= 10;
+        //        if (endingAngle > 45 && !endingShouldGrow)
+        //            endingAngle -= 10;
 
-                if (endingAngle >= 330 || endingAngle <= 45)
-                    endingShouldGrow ^= true;
+        //        if (endingAngle >= 330 || endingAngle <= 45)
+        //            endingShouldGrow ^= true;
 
-                // Refresh the page 30 times per second
-                await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
-            }
-        }
+        //        // Refresh the page 30 times per second
+        //        await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
+        //    }
+        //}
 
-        void CanvasView_OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
-        {
-            var info = e.Info;
-            var surface = e.Surface;
-            var canvas = surface.Canvas;
+        //void CanvasView_OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        //{
+        //    var info = e.Info;
+        //    var surface = e.Surface;
+        //    var canvas = surface.Canvas;
 
-            canvas.Clear();
+        //    canvas.Clear(Color.Yellow.ToSKColor());
 
-            var boundingRect = new SKRect(info.Width / 2 - 100,
-                                             info.Height / 2 - 100,
-                                             info.Width / 2 + 100,
-                                             info.Height / 2 + 100);
+        //    var waitingBoundingRect = new SKRect(info.Width / 2 - 100,
+        //                                     info.Height / 2 - 100,
+        //                                     info.Width / 2 + 100,
+        //                                     info.Height / 2 + 100);
 
-            if (!drawCheckMark)
-            {
-                var arcPath = new SKPath();
-                arcPath.ArcTo(boundingRect, startAngle, endingAngle, true);
+        //    if (drawStaticText)
+        //    {
+        //        var orangePaint = new SKPaint
+        //        {
+        //            Style = SKPaintStyle.Fill,
+        //            Color = Color.Orange.ToSKColor(),
+        //            TextSize = 128
+        //        };
 
-                var arcPaint = new SKPaint
-                {
-                    Color = Color.Orange.ToSKColor(),
-                    StrokeWidth = 20,
-                    Style = SKPaintStyle.Stroke,
-                    StrokeCap = SKStrokeCap.Round
-                };
+        //        canvas.DrawText("Confirm", info.Width / 2 - 30, info.Height / 2, orangePaint);
+        //    }
 
-                canvas.DrawPath(arcPath, arcPaint);
-            }
-            else
-            {
-                var pinkPaint = new SKPaint
-                {
-                    Color = Color.Salmon.ToSKColor(),
-                    StrokeCap = SKStrokeCap.Round,
-                    Style = SKPaintStyle.Stroke,
-                    StrokeWidth = 10
-                };
+        //    if (waitingLoopRunning)
+        //    {
+        //        var arcPath = new SKPath();
+        //        arcPath.ArcTo(waitingBoundingRect, startAngle, endingAngle, true);
 
-                var finishedArc = new SKPath();
-                finishedArc.ArcTo(boundingRect, 10, finishedSweep, true);
-                canvas.DrawPath(finishedArc, pinkPaint);
+        //        var arcPaint = new SKPaint
+        //        {
+        //            Color = Color.Orange.ToSKColor(),
+        //            StrokeWidth = 20,
+        //            Style = SKPaintStyle.Stroke,
+        //            StrokeCap = SKStrokeCap.Round
+        //        };
 
-                canvas.Translate(boundingRect.Left + 20, boundingRect.Top);
+        //        canvas.DrawPath(arcPath, arcPaint);
+        //    }
 
-                var whitePaint = new SKPaint
-                {
-                    Color = Color.White.ToSKColor(),
-                    StrokeCap = SKStrokeCap.Round,
-                    Style = SKPaintStyle.Stroke,
-                    StrokeWidth = 20
-                };
+        //    if (drawCheckMark)
+        //    {
+        //        var pinkPaint = new SKPaint
+        //        {
+        //            Color = Color.Salmon.ToSKColor(),
+        //            StrokeCap = SKStrokeCap.Round,
+        //            Style = SKPaintStyle.Stroke,
+        //            StrokeWidth = 10
+        //        };
 
-                //canvas.DrawLine(0, 100, 40, 150, whitePaint);
-                //canvas.DrawLine(40, 150, 130, 40, whitePaint);
+        //        var finishedArc = new SKPath();
+        //        finishedArc.ArcTo(waitingBoundingRect, 10, finishedSweep, true);
+        //        canvas.DrawPath(finishedArc, pinkPaint);
 
-                if (checkMarkPoints != null)
-                    canvas.DrawPoints(SKPointMode.Polygon, checkMarkPoints, whitePaint);
-            }
-        }
+        //        canvas.Translate(waitingBoundingRect.Left + 20, waitingBoundingRect.Top);
 
-        void Handle_Tapped(object sender, System.EventArgs e)
-        {
-            drawCheckMark = true;
-            pageIsActive = false;
+        //        var whitePaint = new SKPaint
+        //        {
+        //            Color = Color.White.ToSKColor(),
+        //            StrokeCap = SKStrokeCap.Round,
+        //            Style = SKPaintStyle.Stroke,
+        //            StrokeWidth = 20
+        //        };
 
-            DrawTheCheckMark();
-        }
+        //        if (checkMarkPoints != null)
+        //            canvas.DrawPoints(SKPointMode.Polygon, checkMarkPoints, whitePaint);
+        //    }
+        //}
 
-        async Task DrawTheCheckMark()
-        {
-            finishedSweep = 0;
-            while (finishedSweep < 350)
-            {
-                finishedSweep += 15;
+        //void Handle_Tapped(object sender, System.EventArgs e)
+        //{
+        //    if (drawStaticText)
+        //    {
+        //        drawStaticText = false;
+        //        waitingLoopRunning = true;
+        //        WaitingAnimationLoop();
+        //        return;
+        //    }
 
-                if (finishedSweep > 359)
-                    finishedSweep = 359;
+        //    if (waitingLoopRunning)
+        //    {
+        //        waitingLoopRunning = false;
+        //        drawCheckMark = true;
+        //        DrawTheCheckMark();
+        //        return;
+        //    }
+        //}
 
-                canvasView.InvalidateSurface();
+        //async Task DrawTheCheckMark()
+        //{
+        //    finishedSweep = 0;
+        //    while (finishedSweep < 350)
+        //    {
+        //        finishedSweep += 15;
 
-                await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
-            }
+        //        if (finishedSweep > 359)
+        //            finishedSweep = 359;
 
-            List<SKPoint> runningPoints = new List<SKPoint>();
+        //        canvasView.InvalidateSurface();
 
-            for (int downX = 0; downX <= 40; downX +=10 )
-            {
-                var downY = downX * 1.25 + 100;
+        //        await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
+        //    }
 
-                var downPoint = new SKPoint((float)downX, (float)downY);
+        //    List<SKPoint> runningPoints = new List<SKPoint>();
 
-                runningPoints.Add(downPoint);
+        //    for (int downX = 0; downX <= 40; downX += 10)
+        //    {
+        //        var downY = downX * 1.25 + 100;
 
-                checkMarkPoints = runningPoints.ToArray();
-                canvasView.InvalidateSurface();
-                await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
-            }
+        //        var downPoint = new SKPoint((float)downX, (float)downY);
 
-            for (int upX = 40; upX <= 130; upX += 15)
-            {
-                var upY = 150 - (upX - 40) * 1.22222;
+        //        runningPoints.Add(downPoint);
 
-                var upPoint = new SKPoint((float)upX, (float)upY);
-                runningPoints.Add(upPoint);
+        //        checkMarkPoints = runningPoints.ToArray();
+        //        canvasView.InvalidateSurface();
+        //        await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
+        //    }
 
-                checkMarkPoints = runningPoints.ToArray();
-                canvasView.InvalidateSurface();
-                await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
-            }
-        }
+        //    for (int upX = 40; upX <= 130; upX += 15)
+        //    {
+        //        var upY = 150 - (upX - 40) * 1.22222;
+
+        //        var upPoint = new SKPoint((float)upX, (float)upY);
+        //        runningPoints.Add(upPoint);
+
+        //        checkMarkPoints = runningPoints.ToArray();
+        //        canvasView.InvalidateSurface();
+        //        await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
+        //    }
+        //}
     }
 }

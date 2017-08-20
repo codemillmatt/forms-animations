@@ -50,14 +50,14 @@ namespace AnimationDemo
         {
             base.OnAppearing();
 
-            jobApplyView.Appearing();
+            //jobApplyView.Appearing();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
 
-            jobApplyView.Disappearing();
+            //jobApplyView.Disappearing();
         }
     }
 }
