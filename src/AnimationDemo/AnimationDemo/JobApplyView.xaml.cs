@@ -116,7 +116,7 @@ namespace AnimationDemo
                 //canvas.DrawLine(40, 150, 130, 40, whitePaint);
 
                 if (checkMarkPoints != null)
-                    canvas.DrawPoints(SKPointMode.Lines, checkMarkPoints, whitePaint);
+                    canvas.DrawPoints(SKPointMode.Polygon, checkMarkPoints, whitePaint);
             }
         }
 
@@ -145,7 +145,7 @@ namespace AnimationDemo
 
             List<SKPoint> runningPoints = new List<SKPoint>();
 
-            for (int downX = 0; downX <= 40; downX += 4)
+            for (int downX = 0; downX <= 40; downX +=10 )
             {
                 var downY = downX * 1.25 + 100;
 
@@ -158,7 +158,7 @@ namespace AnimationDemo
                 await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
             }
 
-            for (int upX = 40; upX <= 130; upX += 9)
+            for (int upX = 40; upX <= 130; upX += 15)
             {
                 var upY = 150 - (upX - 40) * 1.22222;
 
