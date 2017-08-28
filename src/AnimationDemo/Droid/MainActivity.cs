@@ -21,7 +21,7 @@ namespace AnimationDemo.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            Xamarin.FormsMaps.Init();
+            Xamarin.FormsMaps.Init(this, bundle);
 
             LoadApplication(new App());
         }

@@ -45,5 +45,19 @@ namespace AnimationDemo
                 isVisible = false;
             };
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            //jobApplyView.Appearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            //jobApplyView.Disappearing();
+        }
     }
 }
