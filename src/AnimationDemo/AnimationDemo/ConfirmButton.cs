@@ -21,6 +21,8 @@ namespace AnimationDemo
 
         bool drawStaticText = true;
 
+        SKRect boundingBox;
+
         SKCanvasView canvasView;
 
         public ConfirmButton()
@@ -70,6 +72,7 @@ namespace AnimationDemo
             }
 
             var waitingBoundingRect = new SKRect(left, top, right, bottom);
+            boundingBox = new SKRect(left, top, right, bottom);
 
             if (drawStaticText)
             {
@@ -95,8 +98,8 @@ namespace AnimationDemo
 
                 var arcPaint = new SKPaint
                 {
-                    Color = Color.Orange.ToSKColor(),
-                    StrokeWidth = 5,
+                    Color = Color.White.ToSKColor(),
+                    StrokeWidth = 7,
                     Style = SKPaintStyle.Stroke,
                     StrokeCap = SKStrokeCap.Round
                 };
@@ -108,25 +111,24 @@ namespace AnimationDemo
             {
                 var finishedCirclePaint = new SKPaint
                 {
-                    Color = Color.Salmon.ToSKColor(),
+                    Color = Color.White.ToSKColor(),
                     StrokeCap = SKStrokeCap.Round,
                     Style = SKPaintStyle.Stroke,
-                    StrokeWidth = 5
+                    StrokeWidth = 7
                 };
 
                 var finishedArc = new SKPath();
                 finishedArc.ArcTo(waitingBoundingRect, 10, finishedSweep, true);
                 canvas.DrawPath(finishedArc, finishedCirclePaint);
 
-                canvas.Translate(waitingBoundingRect.Left + 5, waitingBoundingRect.Top);
-
+                canvas.Translate(waitingBoundingRect.Left, 0);
 
                 var checkmarkPaint = new SKPaint
                 {
-                    Color = Color.White.ToSKColor(),
+                    Color = Color.Navy.ToSKColor(),
                     StrokeCap = SKStrokeCap.Round,
                     Style = SKPaintStyle.Stroke,
-                    StrokeWidth = 5
+                    StrokeWidth = 7
                 };
 
                 if (checkMarkPoints != null)
@@ -199,9 +201,11 @@ namespace AnimationDemo
 
             List<SKPoint> runningPoints = new List<SKPoint>();
 
-            for (int downX = 0; downX <= 40; downX += 10)
+            int midX = (int)Math.Floor(.31 * boundingBox.Width);
+
+            for (int downX = 7; downX <= midX; downX += 10)
             {
-                var downY = downX * 1.25 + 100;
+                var downY = downX * 1.25 + .66 * boundingBox.Height;
 
                 var downPoint = new SKPoint((float)downX, (float)downY);
 
@@ -212,9 +216,11 @@ namespace AnimationDemo
                 await Task.Delay(TimeSpan.FromSeconds(1.0 / 30));
             }
 
-            for (int upX = 40; upX <= 130; upX += 15)
+            var bottomY = midX * 1.25 + .66 * boundingBox.Height;
+
+            for (int upX = midX; upX <= boundingBox.Width - 7; upX += 15)
             {
-                var upY = 150 - (upX - 40) * 1.22222;
+                var upY = bottomY - (upX - midX) * 1.222222;
 
                 var upPoint = new SKPoint((float)upX, (float)upY);
                 runningPoints.Add(upPoint);
