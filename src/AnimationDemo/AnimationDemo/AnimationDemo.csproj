@@ -36,6 +36,9 @@
     <EmbeddedResource Include="JobApplyView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="SplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -52,6 +55,9 @@
       <DependentUpon>JobApplyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConfirmButton.cs" />
+    <Compile Include="SplashPage.xaml.cs">
+      <DependentUpon>SplashPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -73,7 +79,7 @@
       <HintPath>..\packages\SkiaSharp.Views.Forms.1.59.1\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Views.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Lottie.Forms">
-      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.1\lib\portable-net45+wp8+win+wpa81+dnxcore50\Lottie.Forms.dll</HintPath>
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.2\lib\portable-net45+wp8+win+wpa81+dnxcore50\Lottie.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

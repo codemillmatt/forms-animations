@@ -8,7 +8,7 @@ namespace AnimationDemo
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new JobDetailPage());
+            MainPage = new NavigationPage(new SplashPage());
         }
 
         protected override void OnStart()
