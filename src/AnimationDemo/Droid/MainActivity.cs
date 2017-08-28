@@ -23,6 +23,8 @@ namespace AnimationDemo.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
 
+            Lottie.Forms.Droid.AnimationViewRenderer.Init();
+
             LoadApplication(new App());
         }
     }

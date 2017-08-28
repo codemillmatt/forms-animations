@@ -15,6 +15,8 @@ namespace AnimationDemo.iOS
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
 
+            Lottie.Forms.iOS.Renderers.AnimationViewRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

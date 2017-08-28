@@ -111,13 +111,13 @@
       <HintPath>..\packages\SkiaSharp.Views.Forms.1.59.1\lib\XamariniOS\SkiaSharp.Views.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Lottie.iOS">
-      <HintPath>..\packages\Com.Airbnb.iOS.Lottie.2.0.3.1\lib\xamarinios\Lottie.iOS.dll</HintPath>
+      <HintPath>..\packages\Com.Airbnb.iOS.Lottie.2.0.5.0\lib\xamarinios\Lottie.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Lottie.Forms">
-      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.1\lib\xamarinios\Lottie.Forms.dll</HintPath>
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.2\lib\xamarinios\Lottie.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Lottie.Forms.iOS">
-      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.1\lib\xamarinios\Lottie.Forms.iOS.dll</HintPath>
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.2\lib\xamarinios\Lottie.Forms.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +144,11 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\material_wave_loading.json" />
+    <BundleResource Include="Resources\LottieLogo1.json" />
+    <BundleResource Include="Resources\gradient.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
