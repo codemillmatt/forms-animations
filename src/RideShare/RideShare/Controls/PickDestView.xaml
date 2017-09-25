@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="RideShare.Controls.PickDestView">
+	<ContentView.Content>
+        <Grid>
+            <BoxView Color="Fuchsia" />
+            <StackLayout Margin="3" BackgroundColor="White" Padding="3">
+                <Label Text="Pickup" x:Name="locationLabel" />
+                <BoxView Color="Silver" HeightRequest="2" />
+                <Entry Placeholder="location" x:Name="locationEntry" />
+            </StackLayout>        
+        </Grid>
+	</ContentView.Content>
+</ContentView>

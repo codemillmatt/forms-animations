@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:controls="clr-namespace:RideShare.Controls"
+    x:Class="RideShare.Pages.OverallMapPage" 
+    Title="Ride Share">
+	<ContentPage.Content>
+        <RelativeLayout x:Name="relLayout">
+            <maps:Map MapType="Street" x:Name="overallMap"
+                RelativeLayout.WidthConstraint=
+                    "{ConstraintExpression Type=RelativeToParent,
+                                           Property=Width,
+                                           Factor=1}"
+                RelativeLayout.HeightConstraint=
+                    "{ConstraintExpression Type=RelativeToParent,
+                                           Property=Height,
+                                           Factor=1}"
+                />
+
+            <Button x:Name="hailRideButton" Text="H" BackgroundColor="Fuchsia" HeightRequest="40" WidthRequest="40"
+                RelativeLayout.XConstraint=
+                    "{ConstraintExpression Type=RelativeToParent,
+                                           Property=Width,
+                                           Factor=.1}"
+                                          
+                RelativeLayout.YConstraint=
+                    "{ConstraintExpression Type=RelativeToParent,
+                                           Property=Height,
+                                           Constant=-100}"
+             /> 
+<!--
+             <controls:PickDestView x:Name="pickup" Opacity="0.0" 
+                RelativeLayout.XConstraint=
+                    "{ConstraintExpression Type=RelativeToParent,
+                                           Property=Width,
+                                           Factor=.1, Constant=40}"
+                RelativeLayout.YConstraint=
+                    "{ConstraintExpression Type=RelativeToParent,
+                                           Property=Height,
+                                           Constant=-100}"
+                RelativeLayout.WidthConstraint=
+                    "{ConstraintExpression Type=RelativeToParent,
+                                           Property=Width,
+                                           Factor=.75}"
+             />
+
+           <controls:PickDestView x:Name="destination" Opacity="0.0"
+            RelativeLayout.XConstraint=
+                "{ConstraintExpression Type=RelativeToParent,
+                                       Property=Width,
+                                       Factor=.1}"
+            RelativeLayout.YConstraint=
+                "{ConstraintExpression Type=RelativeToParent,
+                                       Property=Height,
+                                       Constant=-100}"
+            RelativeLayout.WidthConstraint=
+                "{ConstraintExpression Type=RelativeToParent,
+                                       Property=Width,
+                                       Factor=.75}"
+         />  
+         -->
+        </RelativeLayout>
+	</ContentPage.Content>
+</ContentPage>
