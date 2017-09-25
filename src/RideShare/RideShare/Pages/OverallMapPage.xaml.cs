@@ -24,6 +24,27 @@ namespace RideShare.Pages
             var dest = new PickDestView { Opacity = 0.0, Location = "Destination" };
             var ok = new Button { Opacity = 0.0, Text = "Set Pickup", TextColor = Color.White, BackgroundColor = Color.Fuchsia };
 
+            ok.Clicked += async (sender, e) =>
+            {
+                var finalX = hailRideButton.X + pickup.Width + 5;
+                var yTranslation = -1 * (dest.Height + 10);
+
+                await ok.TranslateTo(finalX, yTranslation, 250, Easing.SinInOut);
+
+                await Task.WhenAll(
+                    ok.TranslateTo(finalX, 0, 250, Easing.SinInOut),
+                    dest.TranslateTo(finalX, 0, 250, Easing.SinInOut)
+                );
+
+                await Task.WhenAll(
+                    ok.TranslateTo(0, 0, 250, Easing.SinInOut),
+                    dest.TranslateTo(0, 0, 250, Easing.SinInOut),
+                    pickup.TranslateTo(0, 0, 250, Easing.SinInOut),
+                    ok.FadeTo(0), dest.FadeTo(0), pickup.FadeTo(0)
+                );
+
+                lottieWait.IsVisible = true;
+            };
 
             var pickY = Constraint.RelativeToView(hailRideButton, (RelativeLayout arg1, View arg2) =>
             {
@@ -80,16 +101,17 @@ namespace RideShare.Pages
 
                     var yTranslation = -1 * (dest.Height + 10);
 
-                    await Task.WhenAll(
+                    await Task.WhenAny(
                         dest.FadeTo(1.0),
-                        dest.TranslateTo(finalX, yTranslation, 1000, Easing.BounceOut),
-                        ok.TranslateTo(finalX, yTranslation, 1000, Easing.BounceOut)
+                        dest.TranslateTo(finalX, yTranslation, 1000, Easing.BounceOut)
                     );
+
+                    await ok.TranslateTo(finalX, yTranslation, 0);
 
                     var okTranslation = -1 * (-1 * yTranslation + ok.Height + 10);
                     await Task.WhenAll(
                         ok.FadeTo(1.0),
-                        ok.TranslateTo(finalX, okTranslation, 500, Easing.CubicInOut)
+                        ok.TranslateTo(finalX, okTranslation, 250, Easing.CubicInOut)
                     );
                 }
 
