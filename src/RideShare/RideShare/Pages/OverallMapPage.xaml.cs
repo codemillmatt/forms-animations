@@ -10,6 +10,8 @@ namespace RideShare.Pages
 {
     public partial class OverallMapPage : ContentPage
     {
+        public bool AlreadyOpen { get; set; }
+
         public OverallMapPage()
         {
             InitializeComponent();
@@ -20,6 +22,7 @@ namespace RideShare.Pages
 
             var pickup = new PickDestView { Opacity = 0.0, Location = "Pickup" };
             var dest = new PickDestView { Opacity = 0.0, Location = "Destination" };
+            var ok = new Button { Opacity = 0.0, Text = "Set Pickup", TextColor = Color.White, BackgroundColor = Color.Fuchsia };
 
 
             var pickY = Constraint.RelativeToView(hailRideButton, (RelativeLayout arg1, View arg2) =>
@@ -39,26 +42,58 @@ namespace RideShare.Pages
 
             relLayout.Children.Add(pickup, xConstraint: pickX, yConstraint: pickY, widthConstraint: pickWidth);
             relLayout.Children.Add(dest, xConstraint: pickX, yConstraint: pickY, widthConstraint: pickWidth);
+            relLayout.Children.Add(ok, xConstraint: pickX, yConstraint: pickY, widthConstraint: pickWidth);
 
-            hailRideButton.Clicked += async (sender, e) =>
+            //hailRideButton.Clicked += async (sender, e) =>
+            //{
+            //    await hailRideButton.ScaleTo(scale: 1.05);
+
+            //    var finalX = hailRideButton.X + pickup.Width + 5;
+
+            //    await Task.WhenAll(
+            //         pickup.FadeTo(1.0),
+            //         pickup.TranslateTo(finalX, 0, 500, Easing.SinInOut),
+            //        dest.TranslateTo(finalX, 0, 500, Easing.SinInOut)
+            //     );
+
+            //    var yTranslation = -1 * (dest.Height + 10);
+
+            //    await Task.WhenAll(
+            //        dest.FadeTo(1.0),
+            //        dest.TranslateTo(finalX, yTranslation, 1000, Easing.BounceOut)
+            //    );
+
+            //};
+
+            flagRide.Tapped += async (sender, e) =>
             {
-                await hailRideButton.ScaleTo(scale: 1.05);
+                if (!this.AlreadyOpen)
+                {
+                    var finalX = hailRideButton.X + pickup.Width + 5;
 
-                var finalX = hailRideButton.X + pickup.Width + 5;
+                    await Task.WhenAll(
+                         pickup.FadeTo(1.0),
+                         pickup.TranslateTo(finalX, 0, 500, Easing.SinInOut),
+                        dest.TranslateTo(finalX, 0, 500, Easing.SinInOut),
+                        ok.TranslateTo(finalX, 0, 500, Easing.SinInOut)
+                     );
 
-                await Task.WhenAll(
-                     pickup.FadeTo(1.0),
-                     pickup.TranslateTo(finalX, 0, 500, Easing.SinInOut),
-                    dest.TranslateTo(finalX, 0, 500, Easing.SinInOut)
-                 );
+                    var yTranslation = -1 * (dest.Height + 10);
 
-                var yTranslation = -1 * (dest.Height + 10);
+                    await Task.WhenAll(
+                        dest.FadeTo(1.0),
+                        dest.TranslateTo(finalX, yTranslation, 1000, Easing.BounceOut),
+                        ok.TranslateTo(finalX, yTranslation, 1000, Easing.BounceOut)
+                    );
 
-                await Task.WhenAll(
-                    dest.FadeTo(1.0),
-                    dest.TranslateTo(finalX, yTranslation, 1000, Easing.BounceOut)
-                );
+                    var okTranslation = -1 * (-1 * yTranslation + ok.Height + 10);
+                    await Task.WhenAll(
+                        ok.FadeTo(1.0),
+                        ok.TranslateTo(finalX, okTranslation, 500, Easing.CubicInOut)
+                    );
+                }
 
+                this.AlreadyOpen = !this.AlreadyOpen;
             };
         }
 
