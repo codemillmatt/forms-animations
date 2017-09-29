@@ -19,19 +19,21 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
+            
             <RelativeLayout x:Name="relLayout" Grid.ColumnSpan="3" Grid.RowSpan="3">
-                <maps:Map MapType="Street" x:Name="overallMap"
+
+                <Image x:Name="overallMap" Source="madisonmap.jpg" Aspect="AspectFill"
                     RelativeLayout.WidthConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
-                                               Property=Width,
-                                               Factor=1}"
+                                                Property=Width,
+                                                Factor=1}"
                     RelativeLayout.HeightConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
-                                               Property=Height,
-                                               Factor=1}"
-                    />
-
-                <Button x:Name="hailRideButton" Text="H" BackgroundColor="Fuchsia" HeightRequest="40" WidthRequest="40" Opacity="0.0"
+                                                Property=Height,
+                                                Factor=1}" />
+                
+                <Button x:Name="callRide" Text="H" 
+                    BackgroundColor="Fuchsia" HeightRequest="40" WidthRequest="40" 
                     RelativeLayout.XConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
                                                Property=Width,
@@ -39,30 +41,30 @@
                     RelativeLayout.YConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
                                                Property=Height,
-                                               Constant=-100}"
-                 /> 
+                                               Constant=-100}" /> 
 
-             <lottie:AnimationView 
-                RelativeLayout.XConstraint=
-                    "{ConstraintExpression Type=RelativeToParent,
-                                            Property=X,
-                                            Factor=1}"
-                RelativeLayout.WidthConstraint=
-                    "{ConstraintExpression Type=RelativeToParent,
-                                            Property=Width,
-                                            Factor=1}"
-                RelativeLayout.YConstraint=
-                    "{ConstraintExpression Type=RelativeToParent,
-                                            Property=Height,
-                                            Factor=.33}"
-                RelativeLayout.HeightConstraint=
-                    "{ConstraintExpression Type=RelativeToParent,
-                                            Property=Height,
-                                            Factor=.5}"
-                Loop="true" AutoPlay="true" Animation="bike_loader.json" BackgroundColor="White" IsVisible="false"
-                x:Name="lottieWait"/>
-                
+                 <lottie:AnimationView IsVisible="false" 
+                    RelativeLayout.XConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=X,
+                                                Factor=1}"
+                    RelativeLayout.WidthConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=Width,
+                                                Factor=1}"
+                    RelativeLayout.YConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=Height,
+                                                Factor=.33}"
+                    RelativeLayout.HeightConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=Height,
+                                                Factor=.5}"
+                    Loop="true" AutoPlay="true" Animation="bike_loader.json" BackgroundColor="White" 
+                    x:Name="lottieWait"/>
+           
             </RelativeLayout>
+            
             <controls:RideFlagButton Grid.Column="1" Grid.Row="1" x:Name="flagRide" />
 
         </Grid>

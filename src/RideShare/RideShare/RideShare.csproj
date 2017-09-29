@@ -47,7 +47,6 @@
     <Compile Include="Controls\PickDestView.xaml.cs">
       <DependentUpon>PickDestView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ConfirmButton.cs" />
     <Compile Include="Controls\RideFlagButton.cs" />
   </ItemGroup>
   <ItemGroup>
