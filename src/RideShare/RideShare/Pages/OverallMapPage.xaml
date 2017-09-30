@@ -41,9 +41,18 @@
                     RelativeLayout.YConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
                                                Property=Height,
-                                               Constant=-100}" /> 
+                                               Constant=-100}" />                                                                         
+            </RelativeLayout>
+        </Grid>
+        
+	</ContentPage.Content>
+</ContentPage>
 
-                 <lottie:AnimationView IsVisible="false" 
+<!--
+<controls:RideFlagButton Grid.Column="1" Grid.Row="1" x:Name="flagRide" />
+
+
+ <lottie:AnimationView IsVisible="false" 
                     RelativeLayout.XConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
                                                 Property=X,
@@ -62,11 +71,5 @@
                                                 Factor=.5}"
                     Loop="true" AutoPlay="true" Animation="bike_loader.json" BackgroundColor="White" 
                     x:Name="lottieWait"/>
-           
-            </RelativeLayout>
-            
-            <controls:RideFlagButton Grid.Column="1" Grid.Row="1" x:Name="flagRide" />
 
-        </Grid>
-	</ContentPage.Content>
-</ContentPage>
+-->
