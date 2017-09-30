@@ -13,7 +13,7 @@ namespace RideShare.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            Xamarin.FormsMaps.Init();
+
             Lottie.Forms.iOS.Renderers.AnimationViewRenderer.Init();
 
             LoadApplication(new App());
