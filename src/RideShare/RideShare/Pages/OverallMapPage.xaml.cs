@@ -10,8 +10,6 @@ namespace RideShare.Pages
 {
     public partial class OverallMapPage : ContentPage
     {
-        public bool AlreadyOpen { get; set; }
-
         PickDestView pickupInfo;
         PickDestView destInfo;
         Button confirmRide;
@@ -27,15 +25,11 @@ namespace RideShare.Pages
             confirmRide.Clicked += ConfirmRide_Clicked;
 
             InitialPosition();
-
-            //InitialAnimatedPosition();
         }
 
         async void ConfirmRide_Clicked(object sender, EventArgs e)
         {
-            HideControls();
-
-            //await HideAnimatedControls();
+            await HideControls();
         }
 
         #region No Animation
@@ -69,7 +63,7 @@ namespace RideShare.Pages
             callRide.Opacity = 0.0;
         }
 
-        void HideControls()
+        async Task HideControls()
         {
             pickupInfo.Opacity = 0.0;
             destInfo.Opacity = 0.0;
@@ -83,14 +77,11 @@ namespace RideShare.Pages
 
         #region SkiaSharp
 
-        //void InitialAnimatedPosition()
+        //void InitialPosition()
         //{
         //    flagRide.Tapped += FlagRide_Tapped;
 
-        //    var yOffset = Constraint.RelativeToView(callRide, (RelativeLayout arg1, View arg2) =>
-        //    {
-        //        return arg2.Y;
-        //    });
+        //    var yOffset = Constraint.RelativeToParent(rl => rl.Height - 100);
 
         //    var widthOffset = Constraint.RelativeToParent((arg) => 0.75 * arg.Width);
 
@@ -107,64 +98,72 @@ namespace RideShare.Pages
         //    relLayout.Children.Add(confirmRide, xOffset, yOffset, widthOffset);
         //}
 
-        async Task HideAnimatedControls()
-        {
-            //    var finalX = callRide.X + pickupInfo.Width + 5;
-            //    var yTranslation = -1 * (destInfo.Height + 10);
-
-            //    await confirmRide.TranslateTo(finalX, yTranslation, 250, Easing.SinInOut);
-
-            //    await Task.WhenAll(
-            //        confirmRide.TranslateTo(finalX, 0, 250, Easing.SinInOut),
-            //        destInfo.TranslateTo(finalX, 0, 250, Easing.SinInOut)
-            //    );
-
-            //    await Task.WhenAll(
-            //        confirmRide.TranslateTo(0, 0, 250, Easing.SinInOut),
-            //        destInfo.TranslateTo(0, 0, 250, Easing.SinInOut),
-            //        pickupInfo.TranslateTo(0, 0, 250, Easing.SinInOut),
-            //        confirmRide.FadeTo(0), destInfo.FadeTo(0), pickupInfo.FadeTo(0)
-            //    );
-
-            //    await flagRide.ScaleTo(1.0, easing: Easing.SinInOut);
-
-            //    //lottieWait.IsVisible = true;
-        }
-
         //async void FlagRide_Tapped(object sender, EventArgs e)
         //{
-        //    if (!this.AlreadyOpen)
-        //    {
-        //        var finalX = flagRide.X + pickupInfo.Width + 15;
+        //    var finalX = flagRide.X + pickupInfo.Width + 15;
 
-        //        await Task.WhenAll(
-        //             pickupInfo.FadeTo(1.0),
-        //             pickupInfo.TranslateTo(finalX, 0, 500, Easing.SinInOut),
-        //             destInfo.TranslateTo(finalX, 0, 500, Easing.SinInOut),
-        //             confirmRide.TranslateTo(finalX, 0, 500, Easing.SinInOut)
-        //         );
+        //    await Task.WhenAll(
+        //         pickupInfo.FadeTo(1.0),
+        //         pickupInfo.TranslateTo(finalX, 0, 500, Easing.SinInOut),
+        //         destInfo.TranslateTo(finalX, 0, 500, Easing.SinInOut),
+        //         confirmRide.TranslateTo(finalX, 0, 500, Easing.SinInOut)
+        //     );
 
-        //        var destinationYTranslation = -1 * (destInfo.Height + 10);
+        //    var destinationYTranslation = -1 * (destInfo.Height + 10);
 
-        //        await Task.WhenAny(
-        //            destInfo.FadeTo(1.0),
-        //            destInfo.TranslateTo(finalX, destinationYTranslation, 1000, Easing.BounceOut)
-        //        );
+        //    await Task.WhenAny(
+        //        destInfo.FadeTo(1.0),
+        //        destInfo.TranslateTo(finalX, destinationYTranslation, 1000, Easing.BounceOut)
+        //    );
 
-        //        await confirmRide.TranslateTo(finalX, destinationYTranslation, 0);
+        //    await confirmRide.TranslateTo(finalX, destinationYTranslation, 0);
 
-        //        var confirmRideYTranslation = -1 * (-1 * destinationYTranslation + confirmRide.Height + 10);
+        //    var confirmRideYTranslation = -1 * (-1 * destinationYTranslation + confirmRide.Height + 10);
 
-        //        await Task.WhenAll(
-        //            confirmRide.FadeTo(1.0),
-        //            confirmRide.TranslateTo(finalX, confirmRideYTranslation, 250, Easing.CubicInOut)
-        //        );
+        //    await Task.WhenAll(
+        //        confirmRide.FadeTo(1.0),
+        //        confirmRide.TranslateTo(finalX, confirmRideYTranslation, 250, Easing.CubicInOut)
+        //    );
 
-        //        await Task.Delay(250);
-        //        await flagRide.ScaleTo(0.0, easing: Easing.SinOut);
-        //    }
+        //    await Task.Delay(250);
+        //    await flagRide.ScaleTo(0.0, easing: Easing.SinOut);
 
-        //    this.AlreadyOpen = !this.AlreadyOpen;
+        //}
+
+        //async Task HideControls()
+        //{
+        //    var finalX = flagRide.X + pickupInfo.Width + 5;
+        //    var yTranslation = -1 * (destInfo.Height + 10);
+
+        //    await confirmRide.TranslateTo(finalX, yTranslation, 250, Easing.SinInOut);
+
+        //    await Task.WhenAll(
+        //        confirmRide.TranslateTo(finalX, 0, 250, Easing.SinInOut),
+        //        destInfo.TranslateTo(finalX, 0, 250, Easing.SinInOut)
+        //    );
+
+        //    await Task.WhenAll(
+        //        confirmRide.TranslateTo(0, 0, 250, Easing.SinInOut),
+        //        destInfo.TranslateTo(0, 0, 250, Easing.SinInOut),
+        //        pickupInfo.TranslateTo(0, 0, 250, Easing.SinInOut),
+        //        confirmRide.FadeTo(0), destInfo.FadeTo(0), pickupInfo.FadeTo(0)
+        //    );
+
+        //    //lottieWait.IsVisible = true;
+
+        //    await Task.Delay(TimeSpan.FromSeconds(2));
+
+        //    //await Task.WhenAll(
+        //    //    lottieWait.ScaleTo(0, 250, Easing.SinOut),
+        //    //    lottieWait.FadeTo(0.0)
+        //    //);
+
+        //    //lottieWait.IsVisible = false;
+        //    //lottieWait.Scale = 1.0;
+        //    //lottieWait.Opacity = 1.0;
+
+
+        //    await flagRide.ScaleTo(1.0, easing: Easing.SinInOut);
         //}
 
         #endregion
