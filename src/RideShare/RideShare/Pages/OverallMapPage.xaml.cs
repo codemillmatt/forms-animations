@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+
 using RideShare.Controls;
-using System.Threading.Tasks;
+
 
 namespace RideShare.Pages
 {
@@ -27,17 +27,18 @@ namespace RideShare.Pages
             //InitialPosition();
             InitialAnimatedPosition();
 
-            callRide.Clicked += CallRide_Clicked;
-            confirmRide.Clicked += ConfirmRide_Clicked;
 
-            // SkiaSharp button
-            flagRide.Tapped += FlagRide_Tapped;
+            confirmRide.Clicked += ConfirmRide_Clicked;
         }
 
         void InitialPosition()
         {
+            callRide.Clicked += CallRide_Clicked;
             animated = false;
+
             flagRide.Opacity = 0.0;
+            flagRide.IsVisible = false;
+
             callRide.Opacity = 1.0;
 
             var widthOffset = Constraint.RelativeToParent((parent) => 0.75 * parent.Width);
@@ -59,8 +60,12 @@ namespace RideShare.Pages
 
         void InitialAnimatedPosition()
         {
+            flagRide.Tapped += FlagRide_Tapped;
+
             animated = true;
             flagRide.Opacity = 1.0;
+
+            callRide.IsVisible = false;
             callRide.Opacity = 0.0;
 
             var yOffset = Constraint.RelativeToView(callRide, (RelativeLayout arg1, View arg2) =>
