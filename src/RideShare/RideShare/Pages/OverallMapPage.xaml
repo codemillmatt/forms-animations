@@ -31,7 +31,8 @@
                         "{ConstraintExpression Type=RelativeToParent,
                                                 Property=Height,
                                                 Factor=1}" />
-                                                               
+
+                
                 <Button x:Name="callRide" Text="H" 
                     BackgroundColor="Fuchsia" HeightRequest="40" WidthRequest="40" 
                     RelativeLayout.XConstraint=
@@ -42,10 +43,26 @@
                         "{ConstraintExpression Type=RelativeToParent,
                                                Property=Height,
                                                Constant=-100}" />  
-                                                               
-            </RelativeLayout>
 
-                       
+                <ActivityIndicator x:Name="theSpinner"                    
+                    RelativeLayout.XConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=X,
+                                                Factor=1}"
+                    RelativeLayout.WidthConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=Width,
+                                                Factor=1}"
+                    RelativeLayout.YConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=Height,
+                                                Factor=.33}"
+                    RelativeLayout.HeightConstraint=
+                        "{ConstraintExpression Type=RelativeToParent,
+                                                Property=Height,
+                                                Factor=.4}" />
+                                                               
+            </RelativeLayout>                                  
         </Grid>
                        
 	</ContentPage.Content>
