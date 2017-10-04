@@ -32,8 +32,9 @@
                                                 Property=Height,
                                                 Factor=1}" />
 
+
                 
-                <Button x:Name="callRide" Text="H" 
+                <Button x:Name="callRide"
                     BackgroundColor="Fuchsia" HeightRequest="40" WidthRequest="40" 
                     RelativeLayout.XConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
@@ -43,6 +44,7 @@
                         "{ConstraintExpression Type=RelativeToParent,
                                                Property=Height,
                                                Constant=-100}" />  
+                                                                                                    
 
                 <ActivityIndicator x:Name="theSpinner"                    
                     RelativeLayout.XConstraint=
@@ -63,6 +65,7 @@
                                                 Factor=.4}" />
                                                                
             </RelativeLayout>                                  
+                                   
         </Grid>
                        
 	</ContentPage.Content>

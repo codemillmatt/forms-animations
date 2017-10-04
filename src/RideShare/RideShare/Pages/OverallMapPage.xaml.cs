@@ -22,6 +22,7 @@ namespace RideShare.Pages
             destInfo = new PickDestView { Opacity = 0.0, Location = "Destination" };
             confirmRide = new Button { Opacity = 0.0, Text = "Set Pickup", TextColor = Color.White, BackgroundColor = Color.Fuchsia };
             theSpinner.BackgroundColor = Color.FromRgba(96, 96, 96, 90);
+            theSpinner.IsVisible = false;
 
             confirmRide.Clicked += ConfirmRide_Clicked;
 
@@ -70,10 +71,12 @@ namespace RideShare.Pages
             destInfo.Opacity = 0.0;
             confirmRide.Opacity = 0.0;
 
+            theSpinner.IsVisible = true;
             theSpinner.IsRunning = true;
 
             await Task.Delay(TimeSpan.FromSeconds(2));
 
+            theSpinner.IsVisible = false;
             theSpinner.IsRunning = false;
 
             callRide.Opacity = 1.0;
@@ -154,10 +157,12 @@ namespace RideShare.Pages
         //        confirmRide.FadeTo(0), destInfo.FadeTo(0), pickupInfo.FadeTo(0)
         //    );
 
+        //    theSpinner.IsVisible = true;
         //    theSpinner.IsRunning = true;
 
         //    await Task.Delay(TimeSpan.FromSeconds(2));
 
+        //    theSpinner.IsVisible = false;
         //    theSpinner.IsRunning = false;
 
         //    await callRide.ScaleTo(1.0, easing: Easing.SinInOut);
@@ -240,6 +245,7 @@ namespace RideShare.Pages
         //        confirmRide.FadeTo(0), destInfo.FadeTo(0), pickupInfo.FadeTo(0)
         //    );
 
+        //    theSpinner.IsVisible = true;
         //    theSpinner.IsRunning = true;
 
         //    //lottieWait.IsVisible = true;
@@ -255,6 +261,7 @@ namespace RideShare.Pages
         //    //lottieWait.Scale = 1.0;
         //    //lottieWait.Opacity = 1.0;
 
+        //    theSpinner.IsVisible = false;
         //    theSpinner.IsRunning = false;
 
         //    await flagRide.ScaleTo(1.0, easing: Easing.SinInOut);
