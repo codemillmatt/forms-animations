@@ -31,8 +31,7 @@
                         "{ConstraintExpression Type=RelativeToParent,
                                                 Property=Height,
                                                 Factor=1}" />
-
-                
+                                                               
                 <Button x:Name="callRide" Text="H" 
                     BackgroundColor="Fuchsia" HeightRequest="40" WidthRequest="40" 
                     RelativeLayout.XConstraint=
@@ -43,8 +42,7 @@
                         "{ConstraintExpression Type=RelativeToParent,
                                                Property=Height,
                                                Constant=-100}" />  
-                
-                                               
+                                                               
             </RelativeLayout>
 
                        
