@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -9,6 +11,8 @@ namespace RideShare.Controls
     public class RideFlagButton : ContentView
     {
         public EventHandler Tapped;
+
+        SKBitmap carBitmap;
 
         SKCanvasView canvasView;
         bool runningAnimation = false;
@@ -76,6 +80,18 @@ namespace RideShare.Controls
             var surface = e.Surface;
             var canvas = surface.Canvas;
 
+            string imageId = "RideShare.Media.CarFix.png";
+            Assembly assembly = GetType().GetTypeInfo().Assembly;
+
+            if (carBitmap == null)
+            {
+                using (Stream stream = assembly.GetManifestResourceStream(imageId))
+                using (SKManagedStream skStream = new SKManagedStream(stream))
+                {
+                    carBitmap = SKBitmap.Decode(skStream);
+                }
+            }
+
             canvas.Clear();
 
             // Setup the circle
@@ -86,6 +102,9 @@ namespace RideShare.Controls
             };
 
             canvas.DrawCircle(info.Width / 2, info.Height / 2, 50, paint);
+
+            // Draw the bitmap
+            canvas.DrawBitmap(carBitmap, new SKRect(15, 10, info.Width - 15, info.Height - 15), null);
 
             if (runningAnimation)
             {
