@@ -34,7 +34,7 @@
 
 
                 
-                <Button x:Name="callRide"
+                <Button x:Name="callRide" Image="CarFix.png"
                     BackgroundColor="Fuchsia" HeightRequest="40" WidthRequest="40" 
                     RelativeLayout.XConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
@@ -43,7 +43,13 @@
                     RelativeLayout.YConstraint=
                         "{ConstraintExpression Type=RelativeToParent,
                                                Property=Height,
-                                               Constant=-100}" />  
+                                               Constant=-100}">
+                        <Button.Text>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Android>F</OnPlatform.Android>
+                            </OnPlatform>
+                        </Button.Text>
+                    </Button>
                                                                                                     
 
                 <ActivityIndicator x:Name="theSpinner"                    

@@ -53,7 +53,18 @@ namespace RideShare.Pages
             var destInfoYOffset = Constraint.RelativeToView(pickupInfo, (rl, pi) => pi.Y - pi.Height - 10);
             relLayout.Children.Add(destInfo, xOffset, destInfoYOffset, widthOffset);
 
-            var confirmRideYOffset = Constraint.RelativeToView(pickupInfo, (rl, pi) => pi.Y - pi.Height - pi.Height - confirmRide.Height + 10);
+            Constraint confirmRideYOffset;
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    confirmRideYOffset = Constraint.RelativeToView(pickupInfo, (rl, pi) => pi.Y - pi.Height - pi.Height - confirmRide.Height + 10);
+                    break;
+                default:
+                    confirmRideYOffset = Constraint.RelativeToView(pickupInfo, (rl, pi) => pi.Y - pi.Height - pi.Height - confirmRide.Height / 4 + 30);
+                    break;
+            }
+
             relLayout.Children.Add(confirmRide, xOffset, confirmRideYOffset, widthOffset);
         }
 
