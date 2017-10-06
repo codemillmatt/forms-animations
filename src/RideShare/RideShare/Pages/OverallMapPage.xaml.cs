@@ -276,6 +276,7 @@ namespace RideShare.Pages
     }
 }
 
+#region Lottie Success
 
 //await Task.WhenAll(
 //    lottieWait.FadeTo(0),
@@ -291,3 +292,5 @@ namespace RideShare.Pages
 
 //await Task.Delay(TimeSpan.FromSeconds(2));
 //lottieWait.Animation = "bike_loader.json";
+
+#endregion
