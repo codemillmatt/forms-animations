@@ -262,6 +262,8 @@ namespace RideShare.Pages
 
         //    await Task.Delay(TimeSpan.FromSeconds(3.5));
 
+
+
         //    //lottieWait.IsVisible = false;
 
         //    theSpinner.IsVisible = false;
@@ -273,3 +275,22 @@ namespace RideShare.Pages
         #endregion
     }
 }
+
+#region Lottie Success
+
+//await Task.WhenAll(
+//    lottieWait.FadeTo(0),
+//    lottieWait.ScaleTo(0, 250, Easing.SinInOut)
+//);
+
+//    lottieWait.Animation = "favourite_app_icon.json";
+
+//await Task.WhenAll(
+//    lottieWait.FadeTo(1),
+//    lottieWait.ScaleTo(1, 250, Easing.SinInOut)
+//);
+
+//await Task.Delay(TimeSpan.FromSeconds(2));
+//lottieWait.Animation = "bike_loader.json";
+
+#endregion
