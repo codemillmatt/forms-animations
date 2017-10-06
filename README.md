@@ -10,13 +10,25 @@ When to properly use animations to provide visual feedback, supply context aroun
 
 After this session, you’ll be equipped to create Xamarin.Forms apps that will stand out with animations.
 
+## Slides
+
+[You can find them here](https://www.slideshare.net/MatthewSoucoup)
+
 ## Demos
 
 ### Built-in Xamarin.Forms Animation APIs
 
+In this demo we looked at the basics of the built-in Xamarin.Forms animation framework. We explored how to move any type of `View` around, including complex `ContentView`s that are composed of several other controls.
+
+We also looked at `Easing` functions, or functions that control _how_ the view animates on the screen.
+
 ### SkiaSharp
 
+This demo showed how to animate using SkiaSharp 2D drawing framework. The key here is to call the `SKCanvas` invalidate funcation then clear what is on the screen and then repaint whatever you need to in such a way that it is just a bit differently - thus appearing as an animation.
+
 ### Lottie
+
+Lottie is a framework from Airbnb used to display animations created in After Effects within a mobile app. Thanks to the work of [Martijn van Dijk](https://github.com/martijn00/LottieXamarin) the use of Lottie within a Xamarin.Forms project is as simple as using an image.
 
 ## References
 
@@ -32,7 +44,7 @@ After this session, you’ll be equipped to create Xamarin.Forms apps that will 
 
 * Lyft app
 * 1Password app
-* Freedome app
+* Shazam app
 * Google Calendar app
 * Gmail app
 * Twitter app
