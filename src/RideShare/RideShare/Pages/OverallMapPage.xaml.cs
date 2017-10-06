@@ -141,12 +141,12 @@ namespace RideShare.Pages
 
         //    await Task.WhenAll(
         //        confirmRide.FadeTo(1.0),
-        //        confirmRide.TranslateTo(finalX, confirmRideYTranslation, 250, Easing.CubicInOut)
+        //        confirmRide.TranslateTo(finalX, confirmRideYTranslation, 250, Easing.SinInOut)
         //    );
 
-        //    await Task.Delay(250);
-        //    await callRide.ScaleTo(0.0, easing: Easing.SinOut);
+        //    await Task.Delay(TimeSpan.FromMilliseconds(250));
 
+        //    callRide.IsVisible = false;
         //}
 
         //async Task HideControls()
@@ -176,11 +176,10 @@ namespace RideShare.Pages
         //    theSpinner.IsVisible = false;
         //    theSpinner.IsRunning = false;
 
-        //    await callRide.ScaleTo(1.0, easing: Easing.SinInOut);
+        //    callRide.IsVisible = true;
         //}
 
         #endregion
-
 
         #region SkiaSharp
 
@@ -202,7 +201,7 @@ namespace RideShare.Pages
 
         //    relLayout.Children.Add(pickupInfo, xOffset, yOffset, widthOffset);
         //    relLayout.Children.Add(destInfo, xOffset, yOffset, widthOffset);
-        //    relLayout.Children.Add(confirmRide, xOffset, yOffset, widthOffset);              
+        //    relLayout.Children.Add(confirmRide, xOffset, yOffset, widthOffset);
         //}
 
         //async void FlagRide_Tapped(object sender, EventArgs e)
@@ -229,11 +228,11 @@ namespace RideShare.Pages
 
         //    await Task.WhenAll(
         //        confirmRide.FadeTo(1.0),
-        //        confirmRide.TranslateTo(finalX, confirmRideYTranslation, 250, Easing.CubicInOut)
+        //        confirmRide.TranslateTo(finalX, confirmRideYTranslation, 250, Easing.SinInOut)
         //    );
 
-        //    await Task.Delay(250);
-        //    await flagRide.ScaleTo(0.0, easing: Easing.SinOut);
+        //    await Task.Delay(TimeSpan.FromMilliseconds(250));
+        //    await flagRide.ScaleTo(0.0, easing: Easing.SinInOut);
 
         //}
 
@@ -261,16 +260,9 @@ namespace RideShare.Pages
 
         //    //lottieWait.IsVisible = true;
 
-        //    await Task.Delay(TimeSpan.FromSeconds(2));
-
-        //    //await Task.WhenAll(
-        //    //    lottieWait.ScaleTo(0, 250, Easing.SinOut),
-        //    //    lottieWait.FadeTo(0.0)
-        //    //);
+        //    await Task.Delay(TimeSpan.FromSeconds(3.5));
 
         //    //lottieWait.IsVisible = false;
-        //    //lottieWait.Scale = 1.0;
-        //    //lottieWait.Opacity = 1.0;
 
         //    theSpinner.IsVisible = false;
         //    theSpinner.IsRunning = false;
