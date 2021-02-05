@@ -35,7 +35,7 @@ Lottie is a framework from Airbnb used to display animations created in After Ef
 ### Research
 * [Built-in Xamarin.Forms Animation Overview](https://developer.xamarin.com/guides/xamarin-forms/user-interface/animation/simple/)
 * [SkiaSharp in Xamarin.Forms](https://developer.xamarin.com/guides/xamarin-forms/advanced/skiasharp/)
-* [Petzhold on SkiaSharp](https://channel9.msdn.com/Events/Xamarin/Xamarin-University-Presents-Webinar-Series/SkiaSharp-Graphics-for-XamarinForms)
+* [Petzhold on SkiaSharp](https://channel9.msdn.com/Events/Xamarin/Xamarin-University-Presents-Webinar-Series/SkiaSharp-Graphics-for-XamarinForms?WT.mc_id=mobile-0000-masoucou)
 * [Google Material Motion](https://material.io/guidelines/motion/material-motion.html#)
 * [Improving Mobile App Experience with Animations](https://www.shopify.com/partners/blog/using-animation-to-improve-mobile-app-user-experience)
 * [UX Design with Animations](https://uxplanet.org/animation-in-mobile-ux-design-93263dc6c5f4)
